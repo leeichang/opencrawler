@@ -1,19 +1,37 @@
 ## .NET
 bin/
+[Bb]in/
 obj/
+[Oo]bj/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
+## .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
 ## Visual Studio
 .vs/
 *.rsuser
 [Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+[Dd]ebug/
+[Dd]ebugPublic/
 [Dd]ebug*/
+[Rr]elease/
+[Rr]eleases/
 [Rr]elease*/
 x64/
 x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
 bld/
 [Ll]og/
 [Ll]ogs/
@@ -22,11 +40,10 @@ bld/
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
 *.nupkg
+*.snupkg
 **/packages/repositories.config
 
 ## Build results
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
 *_i.c
 *_p.c
 *_h.h
@@ -56,6 +73,17 @@ bld/
 *.svclog
 *.scc
 
+## MSBuild
+*.binlog
+
+## NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+## Code Coverage
+CodeCoverage/
+
 ## OS
 Thumbs.db
 ehthumbs.db
@@ -70,3 +98,6 @@ Desktop.ini
 *.swp
 *.swo
 *~
+
+## Others
+~$*
