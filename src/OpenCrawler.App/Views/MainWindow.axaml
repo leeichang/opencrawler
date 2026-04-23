@@ -1,0 +1,142 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="using:OpenCrawler.App.Markup"
+        xmlns:vm="using:OpenCrawler.App.ViewModels"
+        xmlns:views="using:OpenCrawler.App.Views"
+        xmlns:wv="using:AvaloniaWebView"
+        x:Class="OpenCrawler.App.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="openCrawler"
+        Width="1400" Height="860"
+        WindowStartupLocation="CenterScreen">
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="{loc:Tr Key=Menu_File}">
+                <MenuItem Header="{loc:Tr Key=Menu_Settings}" Command="{Binding OpenSettingsCommand}" />
+            </MenuItem>
+        </Menu>
+
+        <Border Grid.Row="1" Padding="12,8" BorderBrush="Gray" BorderThickness="0,0,0,1">
+            <Grid ColumnDefinitions="*,Auto,Auto,Auto">
+                <TextBox Grid.Column="0"
+                         Text="{Binding Url, Mode=TwoWay}"
+                         Watermark="{loc:Tr Key=Main_UrlPlaceholder}"
+                         Margin="0,0,8,0" />
+                <ComboBox Grid.Column="1"
+                          ItemsSource="{Binding FetchModes}"
+                          SelectedItem="{Binding FetchMode, Mode=TwoWay}"
+                          Width="120"
+                          Margin="0,0,8,0" />
+                <Button Grid.Column="2"
+                        Content="{loc:Tr Key=Main_Download}"
+                        Command="{Binding DownloadCommand}"
+                        IsEnabled="{Binding !IsDownloading}"
+                        Classes="accent"
+                        Margin="0,0,8,0" />
+                <ProgressBar Grid.Column="3"
+                             IsVisible="{Binding IsDownloading}"
+                             IsIndeterminate="True"
+                             Width="100" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" ColumnDefinitions="300,*">
+            <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <DockPanel LastChildFill="True">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="8">
+                        <TextBlock Text="{loc:Tr Key=Categories_Title}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                        <Button Content="+ {loc:Tr Key=Categories_New}"
+                                Command="{Binding NewCategoryCommand}" Margin="8,0,0,0">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="+ " />
+                                    <TextBlock Text="{loc:Tr Key=Categories_New}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                    <TreeView ItemsSource="{Binding Library}"
+                              SelectedItem="{Binding SelectedNode, Mode=TwoWay}">
+                        <TreeView.ItemTemplate>
+                            <TreeDataTemplate DataType="vm:LibraryNode" ItemsSource="{Binding Children}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DisplayLabel}" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{Binding Subtitle}"
+                                               Margin="8,0,0,0" Foreground="Gray" FontSize="11"
+                                               VerticalAlignment="Center" />
+                                    <StackPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="{loc:Tr Key=Articles_OpenInBrowser}"
+                                                      Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).OpenNodeInBrowserCommand}"
+                                                      CommandParameter="{Binding}" />
+                                            <MenuItem Header="{loc:Tr Key=Articles_RevealInFolder}"
+                                                      Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).RevealNodeInFolderCommand}"
+                                                      CommandParameter="{Binding}" />
+                                            <MenuItem Header="{loc:Tr Key=Articles_Summarize}"
+                                                      Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).SummarizeNodeCommand}"
+                                                      CommandParameter="{Binding}" />
+                                            <Separator />
+                                            <MenuItem Header="{loc:Tr Key=Articles_Rename}"
+                                                      Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).RenameNodeCommand}"
+                                                      CommandParameter="{Binding}" />
+                                            <MenuItem Header="{loc:Tr Key=Articles_Delete}"
+                                                      Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).DeleteNodeCommand}"
+                                                      CommandParameter="{Binding}" />
+                                        </ContextMenu>
+                                    </StackPanel.ContextMenu>
+                                </StackPanel>
+                            </TreeDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </DockPanel>
+            </Border>
+
+            <TabControl Grid.Column="1">
+                <TabItem Header="{loc:Tr Key=Detail_Preview}">
+                    <wv:WebView Url="{Binding PreviewUri}" />
+                </TabItem>
+                <TabItem Header="{loc:Tr Key=Detail_Info}">
+                    <ScrollViewer>
+                        <StackPanel Spacing="12" Margin="16" DataContext="{Binding SelectedArticle}">
+                            <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="SemiBold" />
+                            <StackPanel Spacing="4">
+                                <TextBlock>
+                                    <Run Text="{loc:Tr Key=Detail_SourceUrl}" />
+                                    <Run Text=": " />
+                                    <Run Text="{Binding SourceUrl}" />
+                                </TextBlock>
+                                <TextBlock>
+                                    <Run Text="{loc:Tr Key=Detail_DownloadedAt}" />
+                                    <Run Text=": " />
+                                    <Run Text="{Binding DownloadedAt}" />
+                                </TextBlock>
+                                <TextBlock>
+                                    <Run Text="{loc:Tr Key=Detail_ImageCount}" />
+                                    <Run Text=": " />
+                                    <Run Text="{Binding ImageCount}" />
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Button Content="{loc:Tr Key=Articles_OpenInBrowser}"
+                                        Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).OpenNodeInBrowserCommand}" />
+                                <Button Content="{loc:Tr Key=Articles_RevealInFolder}"
+                                        Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).RevealNodeInFolderCommand}" />
+                                <Button Content="{loc:Tr Key=Articles_Summarize}"
+                                        Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).SummarizeNodeCommand}"
+                                        Classes="accent" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{loc:Tr Key=Detail_Notes}">
+                    <views:NotesTabView DataContext="{Binding NotesTab}" />
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <Border Grid.Row="3" BorderBrush="Gray" BorderThickness="0,1,0,0" Padding="8,4">
+            <TextBlock Text="{Binding StatusMessage}" />
+        </Border>
+    </Grid>
+</Window>

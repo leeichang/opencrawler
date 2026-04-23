@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>OpenCrawler.App</RootNamespace>
+    <AssemblyName>OpenCrawler</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.2.1" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.1" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageReference Include="Avalonia.AvaloniaEdit" Version="11.3.0" />
+    <PackageReference Include="Markdown.Avalonia" Version="11.0.2" />
+    <PackageReference Include="WebView.Avalonia" Version="11.0.0.1" />
+    <PackageReference Include="WebView.Avalonia.Desktop" Version="11.0.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCrawler.Core\OpenCrawler.Core.csproj" />
+  </ItemGroup>
+
+</Project>

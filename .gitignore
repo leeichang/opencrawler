@@ -1,0 +1,72 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio
+.vs/
+*.rsuser
+[Tt]est[Rr]esult*/
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+## NuGet
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nupkg
+**/packages/repositories.config
+
+## Build results
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+## OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+## Claude
+.claude/
+
+## IDE
+.idea/
+*.swp
+*.swo
+*~

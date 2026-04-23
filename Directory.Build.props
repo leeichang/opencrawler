@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <RollForward>LatestMajor</RollForward>
+    <Authors>cympotek</Authors>
+    <Product>openCrawler</Product>
+  </PropertyGroup>
+</Project>

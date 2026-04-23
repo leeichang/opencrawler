@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/OpenCrawler.App/OpenCrawler.App.csproj" />
+    <Project Path="src/OpenCrawler.Cli/OpenCrawler.Cli.csproj" />
+    <Project Path="src/OpenCrawler.Core/OpenCrawler.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/OpenCrawler.Cli.Tests/OpenCrawler.Cli.Tests.csproj" />
+    <Project Path="tests/OpenCrawler.Core.Tests/OpenCrawler.Core.Tests.csproj" />
+  </Folder>
+</Solution>

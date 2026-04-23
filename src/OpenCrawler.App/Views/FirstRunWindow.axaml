@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="using:OpenCrawler.App.Markup"
+        xmlns:vm="using:OpenCrawler.App.ViewModels"
+        x:Class="OpenCrawler.App.Views.FirstRunWindow"
+        x:DataType="vm:FirstRunViewModel"
+        Title="{loc:Tr Key=FirstRun_Title}"
+        Width="600" Height="320"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+    <Grid RowDefinitions="Auto,*,Auto" Margin="24">
+        <TextBlock Grid.Row="0"
+                   Text="{loc:Tr Key=FirstRun_Title}"
+                   FontSize="22" FontWeight="SemiBold" Margin="0,0,0,12" />
+
+        <StackPanel Grid.Row="1" Spacing="12">
+            <TextBlock Text="{loc:Tr Key=FirstRun_Description}" TextWrapping="Wrap" />
+            <TextBlock Text="{loc:Tr Key=FirstRun_StorageLabel}" Margin="0,8,0,0" />
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBox Grid.Column="0" Text="{Binding StorageRoot}" Margin="0,0,8,0" />
+                <Button Grid.Column="1"
+                        Content="{loc:Tr Key=FirstRun_ChooseFolder}"
+                        Command="{Binding PickFolderCommand}" />
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+            <Button Content="{loc:Tr Key=FirstRun_Continue}"
+                    Command="{Binding ContinueCommand}"
+                    Classes="accent" />
+        </StackPanel>
+    </Grid>
+</Window>

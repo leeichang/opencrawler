@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="using:OpenCrawler.App.Markup"
+             xmlns:vm="using:OpenCrawler.App.ViewModels"
+             xmlns:md="clr-namespace:Markdown.Avalonia;assembly=Markdown.Avalonia"
+             x:Class="OpenCrawler.App.Views.NotesTabView"
+             x:DataType="vm:NotesTabViewModel">
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <Grid Grid.Row="0" Margin="4">
+            <StackPanel Orientation="Horizontal" Spacing="4">
+                <ListBox ItemsSource="{Binding Notes}"
+                         SelectedItem="{Binding Current, Mode=TwoWay}"
+                         Height="36"
+                         MinWidth="120">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="vm:NoteTabItem">
+                            <TextBlock Text="{Binding Title}" Padding="8,4" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Content="+" Command="{Binding AddNoteCommand}" />
+                <Button Content="🗑" Command="{Binding DeleteCurrentCommand}" />
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="1" Background="#22808080" Padding="8,4">
+            <StackPanel Orientation="Horizontal" Spacing="16" DataContext="{Binding Current}">
+                <TextBlock Text="{Binding SizeDisplay}" />
+                <TextBlock Text="{Binding SizeLevel}" />
+                <TextBlock Text="{Binding StatusText}" Foreground="Gray" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" DataContext="{Binding Current}">
+            <TextBox Grid.Column="0"
+                     Text="{Binding Content, Mode=TwoWay}"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     FontFamily="Cascadia Code, Consolas, Menlo, monospace"
+                     FontSize="13"
+                     VerticalContentAlignment="Top"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            <ScrollViewer Grid.Column="1" BorderBrush="Gray" BorderThickness="1,0,0,0">
+                <md:MarkdownScrollViewer Markdown="{Binding Content}" Margin="8" />
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

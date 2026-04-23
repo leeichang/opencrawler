@@ -1,0 +1,95 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="using:OpenCrawler.App.Markup"
+        xmlns:vm="using:OpenCrawler.App.ViewModels"
+        x:Class="OpenCrawler.App.Views.SettingsWindow"
+        x:DataType="vm:SettingsViewModel"
+        Title="{loc:Tr Key=Settings_Title}"
+        Width="720" Height="640"
+        WindowStartupLocation="CenterOwner">
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="14">
+
+            <TextBlock Text="{loc:Tr Key=Settings_Title}" FontSize="20" FontWeight="SemiBold" />
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="{loc:Tr Key=Settings_Language}" />
+                <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding UiLanguage, Mode=TwoWay}" Width="160"
+                          SelectionChanged="OnLanguageChanged" />
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="{loc:Tr Key=Settings_Theme}" />
+                <ComboBox ItemsSource="{Binding Themes}" SelectedItem="{Binding Theme, Mode=TwoWay}" Width="160" />
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="{loc:Tr Key=Settings_Storage}" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBox Grid.Column="0" Text="{Binding StorageRoot, Mode=TwoWay}" Margin="0,0,8,0" />
+                    <Button Grid.Column="1" Content="…" Command="{Binding PickStorageCommand}" />
+                </Grid>
+            </StackPanel>
+
+            <Separator />
+
+            <TextBlock Text="{loc:Tr Key=Settings_Gcp_Title}" FontSize="15" FontWeight="SemiBold" />
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="{loc:Tr Key=Settings_Gcp_SaJson}" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBox Grid.Column="0" Text="{Binding ServiceAccountJsonPath, Mode=TwoWay}" Margin="0,0,8,0" />
+                    <Button Grid.Column="1" Content="…" Command="{Binding PickSaJsonCommand}" />
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="{loc:Tr Key=Settings_Gcp_ProjectNumber}" />
+                <TextBox Text="{Binding ProjectNumber, Mode=TwoWay}" Width="280" HorizontalAlignment="Left" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="16">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="{loc:Tr Key=Settings_Gcp_Location}" />
+                    <ComboBox ItemsSource="{Binding Locations}" SelectedItem="{Binding Location, Mode=TwoWay}" Width="160" />
+                </StackPanel>
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Endpoint" />
+                    <ComboBox ItemsSource="{Binding Locations}" SelectedItem="{Binding EndpointLocation, Mode=TwoWay}" Width="160" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="{loc:Tr Key=Settings_Gcp_Test}" Command="{Binding TestGcpCommand}" />
+                <TextBlock Text="{Binding GcpTestResult}" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <Separator />
+
+            <TextBlock Text="{loc:Tr Key=Settings_Gemini_Title}" FontSize="15" FontWeight="SemiBold" />
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="{loc:Tr Key=Settings_Gemini_ApiKey}" />
+                <TextBox Text="{Binding GeminiApiKey, Mode=TwoWay}" PasswordChar="*" />
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="{loc:Tr Key=Settings_Gemini_Model}" />
+                <TextBox Text="{Binding GeminiModel, Mode=TwoWay}" Width="280" HorizontalAlignment="Left" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="{loc:Tr Key=Settings_Gcp_Test}" Command="{Binding TestGeminiCommand}" />
+                <TextBlock Text="{Binding GeminiTestResult}" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <Separator />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+                <Button Content="{loc:Tr Key=Common_Ok}" Classes="accent"
+                        Command="{Binding SaveCommand}" Click="OnClose" />
+                <Button Content="{loc:Tr Key=Common_Cancel}" Click="OnClose" />
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

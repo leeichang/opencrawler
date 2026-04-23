@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="AppTitle"><value>openCrawler</value></data>
+  <data name="FirstRun_Title"><value>歡迎使用 openCrawler</value></data>
+  <data name="FirstRun_StorageLabel"><value>儲存資料夾</value></data>
+  <data name="FirstRun_ChooseFolder"><value>選擇資料夾…</value></data>
+  <data name="FirstRun_Continue"><value>繼續</value></data>
+  <data name="FirstRun_Description"><value>請選擇一個資料夾,用來存放下載的文章與資料庫檔。</value></data>
+
+  <data name="Menu_File"><value>檔案</value></data>
+  <data name="Menu_Settings"><value>設定</value></data>
+  <data name="Menu_About"><value>關於</value></data>
+
+  <data name="Main_UrlPlaceholder"><value>貼上文章網址…</value></data>
+  <data name="Main_Download"><value>下載</value></data>
+  <data name="Main_FetchMode_Auto"><value>自動</value></data>
+  <data name="Main_FetchMode_Fast"><value>快速</value></data>
+  <data name="Main_FetchMode_Browser"><value>瀏覽器</value></data>
+
+  <data name="Categories_Title"><value>分類</value></data>
+  <data name="Categories_New"><value>新增分類</value></data>
+  <data name="Categories_Rename"><value>重新命名</value></data>
+  <data name="Categories_Delete"><value>刪除</value></data>
+
+  <data name="Articles_Title"><value>文章</value></data>
+  <data name="Articles_OpenInBrowser"><value>在瀏覽器開啟</value></data>
+  <data name="Articles_RevealInFolder"><value>在檔案總管顯示</value></data>
+  <data name="Articles_Summarize"><value>送 NotebookLM 摘要</value></data>
+  <data name="Articles_Rename"><value>重新命名</value></data>
+  <data name="Articles_Delete"><value>刪除</value></data>
+
+  <data name="Detail_Info"><value>資訊</value></data>
+  <data name="Detail_Preview"><value>預覽</value></data>
+  <data name="Detail_Notes"><value>註解</value></data>
+  <data name="Detail_SourceUrl"><value>原始網址</value></data>
+  <data name="Detail_DownloadedAt"><value>下載時間</value></data>
+  <data name="Detail_ImageCount"><value>圖片數</value></data>
+  <data name="Detail_Size"><value>大小</value></data>
+
+  <data name="Notes_Default"><value>預設註解</value></data>
+  <data name="Notes_Add"><value>新增 Note</value></data>
+  <data name="Notes_Rename"><value>重新命名</value></data>
+  <data name="Notes_Delete"><value>刪除</value></data>
+  <data name="Notes_Saved"><value>已儲存 · {0}</value></data>
+  <data name="Notes_Unsaved"><value>未儲存的變更</value></data>
+  <data name="Notes_SizeWarning"><value>接近 2 MB 上限,建議新增另一份 note。</value></data>
+  <data name="Notes_SizeOver"><value>已超過 2 MB 建議上限,效能可能下降。</value></data>
+
+  <data name="Settings_Title"><value>設定</value></data>
+  <data name="Settings_Language"><value>語言</value></data>
+  <data name="Settings_Theme"><value>主題</value></data>
+  <data name="Settings_Storage"><value>儲存資料夾</value></data>
+  <data name="Settings_Gcp_Title"><value>Google Cloud(NotebookLM)</value></data>
+  <data name="Settings_Gcp_SaJson"><value>Service Account JSON</value></data>
+  <data name="Settings_Gcp_ProjectNumber"><value>Project Number</value></data>
+  <data name="Settings_Gcp_Location"><value>區域</value></data>
+  <data name="Settings_Gcp_Test"><value>測試連線</value></data>
+  <data name="Settings_Gemini_Title"><value>Gemini(文字摘要)</value></data>
+  <data name="Settings_Gemini_ApiKey"><value>API Key</value></data>
+  <data name="Settings_Gemini_Model"><value>模型</value></data>
+
+  <data name="Common_Ok"><value>確定</value></data>
+  <data name="Common_Cancel"><value>取消</value></data>
+  <data name="Common_Yes"><value>是</value></data>
+  <data name="Common_No"><value>否</value></data>
+  <data name="Common_Error"><value>錯誤</value></data>
+</root>
